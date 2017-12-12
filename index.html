@@ -1,0 +1,87 @@
+<!-- https://www.kalyani.com/blog/2010/10/08/subway-map-visualization-jquery-plugin/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="jquery.subwayMap-0.5.0.js"></script>
+	<style>
+	.subway-map
+    {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+    }
+    #legend
+    {
+        float: left;
+        width: 250px;
+        height:400px;
+    }
+
+    #legend div
+    {
+        height: 25px;
+    }
+
+    #legend span
+    {
+        margin: 5px 5px 5px 0;
+    }
+	</style>
+</head>
+<body>
+    <div class="subway-map" data-columns="12" data-rows="8" data-cellSize="100" data-legendId="legend" data-textClass="text" data-gridNumbers="true" data-grid="true" data-lineWidth="8">
+        <ul data-color="#ff4db2" data-label="Alamein" data-shiftCoords="0,2">          
+            <li data-coords="11,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/accordion/">Glenferrie</a></li>  
+            <li data-coords="10,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/autocomplete/"><a href="http://jqueryui.com/demos/autocomplete/">Hawthorn</a></li>  
+            <li data-coords="9,6" data-marker="station" data-labelPos="S"><a href="http://google.com">Burnley</a></li>  
+            <li data-coords="8,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/slider/">East Richmond</a></li>
+            <li data-coords="7,6"></li>
+            <li data-coords="7,4.65"></li>
+            <li data-coords="6,4.65"></li>
+            <li data-coords="6,4.65"></li>
+            <li data-coords="5,4.65"></li>
+            <li data-coords="5,6"></li>
+            <li data-coords="4,6"></li>
+            <li data-coords="3,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/datepicker/">Flinders</a></li>  
+        </ul>
+
+        <ul data-label="Richmond Interchange">
+        	<li data-coords="6,5" data-marker="interchange" data-markerInfo="V7" data-labelPos="S"><a href="http://jqueryui.com/demos/datepicker/">Richmond</a></li>
+        </ul>
+
+        <ul data-color="#00ff00" data-label="Glen Waverley" data-shiftCoords="0,0">      
+            <li data-coords="1,3" data-marker="station" data-labelPos="S">Flagstaff</li> 
+            <li data-coords="2.5,3" data-marker="station" data-labelPos="S">Melbourne Central</li>
+            <li data-coords="4,3" data-marker="station" data-labelPos="S">Parliament</li>
+            <li data-coords="5,3"></li>
+            <li data-coords="5,4.65"></li>  
+            <li data-coords="6,4.65"></li>
+            <li data-coords="7,4.65"></li>
+            <li data-coords="7,4"></li>
+            <li data-coords="7,3"></li>
+            <li data-coords="8,3"></li>
+            <li data-coords="9,3" data-marker="station" data-labelPos="S">Kooyong</li>  
+            <li data-coords="10,3" data-marker="station" data-labelPos="S">Tooronga</li>  
+        </ul>
+
+        <ul data-color="#00ffff" data-label="Sandringham" data-shiftCoords="0,1">      
+            <li data-coords="2,4.65" data-marker="station" data-labelPos="S">Southern Cross</li> 
+            <li data-coords="6,4.65" data-marker="station" data-labelPos="S"></li>
+            <li data-coords="8,4.65" data-marker="station" data-labelPos="S">South Yarra</li>  
+            <li data-coords="9,4.65" data-marker="station" data-labelPos="S">Prahran</li>  
+            <li data-coords="10,4.65" data-marker="station" data-labelPos="S">Windsor</li>  
+        </ul>
+    </div>
+    <div id="legend"></div>
+	<script>
+		$(".subway-map").subwayMap({ debug: true });
+	</script>
+	<script src="app.js"></script>
+
+</body>
+</html>
