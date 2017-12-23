@@ -1,0 +1,78 @@
+<!-- https://www.kalyani.com/blog/2010/10/08/subway-map-visualization-jquery-plugin/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="jquery.subwayMap-0.5.0.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="subway-map" data-columns="12" data-rows="8" data-cellSize="100" data-legendId="legend" data-textClass="text" data-gridNumbers="true" data-grid="true" data-lineWidth="8">
+
+        <ul data-color="#00ff00" data-label="Glen Waverley">      
+            <li data-coords="1,3.5" data-marker="station" data-labelPos="S">Flagstaff</li> 
+            <li data-coords="2.5,3.5" data-marker="station" data-labelPos="S">Melbourne Central</li>
+            <li data-coords="4,3.5" data-marker="station" data-labelPos="S">Parliament</li>
+            <li data-coords="5,3.5"></li>
+            <li data-coords="5,4.5"></li>  
+            <li data-coords="6,4.5"></li>
+            <li data-coords="7,4.5"></li>
+            <li data-coords="7,4"></li>
+            <li data-coords="7,3.5"></li>
+            <li data-coords="8,3.5"></li>
+            <li data-coords="9,3.5" data-marker="station" data-labelPos="S">Kooyong</li>  
+            <li data-coords="10,3.5" data-marker="station" data-labelPos="S">Tooronga</li>  
+        </ul>
+
+        <ul data-color="#00ffff" data-label="Sandringham">      
+            <li data-coords="2,4.75" data-marker="station" data-labelPos="S">Southern Cross</li> 
+            <li data-coords="6,4.75" data-marker="station" data-labelPos="S"></li>
+            <li data-coords="8,4.75" data-marker="station" data-labelPos="S">South Yarra</li>  
+            <li data-coords="9,4.75" data-marker="station" data-labelPos="S">Prahran</li>  
+            <li data-coords="10,4.75" data-marker="station" data-labelPos="S">Windsor</li>  
+        </ul>
+
+        <ul data-label="Richmond Interchange">
+            <li data-coords="6,5" data-marker="interchange" data-markerInfo="V1" data-labelPos="S"><a href="http://jqueryui.com/demos/datepicker/">Richmond</a></li>
+            <li data-coords="6,4.75" data-marker="interchange" data-markerInfo="V1" data-labelPos="S"><a href=""> </a></li>
+            <li data-coords="6,4.5" data-marker="interchange" data-markerInfo="V1" data-labelPos="S"><a href=""> </a></li>
+        </ul>
+
+        <ul data-color="#ff4db2" data-label="Alamein">          
+            <li data-coords="11,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/accordion/">Glenferrie</a></li>  
+            <li data-coords="10,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/autocomplete/"><a href="http://jqueryui.com/demos/autocomplete/">Hawthorn</a></li>  
+            <li data-coords="9,6" data-marker="station" data-labelPos="S"><a href="http://google.com">Burnley</a></li>  
+            <li data-coords="8,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/slider/">East Richmond</a></li>
+            <li data-coords="7,6"></li>
+            <li data-coords="7,5"></li>
+            <li data-coords="6,5"></li>
+            <li data-coords="6,5"></li>
+            <li data-coords="5,5"></li>
+            <li data-coords="5,6"></li>
+            <li data-coords="4,6"></li>
+            <li data-coords="3,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/datepicker/">Flinders</a></li>  
+        </ul>
+    </div>
+    <div id="legend"></div>
+        <div class="submit_clear_buttons">
+        <button id="submit">Submit</button>
+        <button id="clear">Clear</button>
+    </div>
+    <div id="route">
+        <h2>Route</h2>
+        <p id="origin">Origin: <span></span></p>
+        <p id="destination">Destination: <span></span></p>
+        <div id="route_info">
+            <p id="num_stops">How many stops? <span></span></p>
+            <p id="journey">What is the route? <span></span></p>
+        </div>
+    </div>
+	<script>
+		$(".subway-map").subwayMap({ debug: true });
+	</script>
+    
+</body>
+</html>

@@ -5,83 +5,285 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
-    <script type="text/javascript" src="jquery.subwayMap-0.5.0.js"></script>
-	<style>
-	.subway-map
-    {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        background-color: white;
-    }
-    #legend
-    {
-        float: left;
-        width: 250px;
-        height:400px;
-    }
-
-    #legend div
-    {
-        height: 25px;
-    }
-
-    #legend span
-    {
-        margin: 5px 5px 5px 0;
-    }
-	</style>
-</head>
+    <link rel="stylesheet" href="css/style.css">
+</head> 
 <body>
-    <div class="subway-map" data-columns="12" data-rows="8" data-cellSize="100" data-legendId="legend" data-textClass="text" data-gridNumbers="true" data-grid="true" data-lineWidth="8">
-        <ul data-color="#ff4db2" data-label="Alamein" data-shiftCoords="0,2">          
-            <li data-coords="11,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/accordion/">Glenferrie</a></li>  
-            <li data-coords="10,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/autocomplete/"><a href="http://jqueryui.com/demos/autocomplete/">Hawthorn</a></li>  
-            <li data-coords="9,6" data-marker="station" data-labelPos="S"><a href="http://google.com">Burnley</a></li>  
-            <li data-coords="8,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/slider/">East Richmond</a></li>
-            <li data-coords="7,6"></li>
-            <li data-coords="7,4.65"></li>
-            <li data-coords="6,4.65"></li>
-            <li data-coords="6,4.65"></li>
-            <li data-coords="5,4.65"></li>
-            <li data-coords="5,6"></li>
-            <li data-coords="4,6"></li>
-            <li data-coords="3,6" data-marker="station" data-labelPos="S"><a href="http://jqueryui.com/demos/datepicker/">Flinders</a></li>  
-        </ul>
-
-        <ul data-label="Richmond Interchange">
-        	<li data-coords="6,5" data-marker="interchange" data-markerInfo="V7" data-labelPos="S"><a href="http://jqueryui.com/demos/datepicker/">Richmond</a></li>
-        </ul>
-
-        <ul data-color="#00ff00" data-label="Glen Waverley" data-shiftCoords="0,0">      
-            <li data-coords="1,3" data-marker="station" data-labelPos="S">Flagstaff</li> 
-            <li data-coords="2.5,3" data-marker="station" data-labelPos="S">Melbourne Central</li>
-            <li data-coords="4,3" data-marker="station" data-labelPos="S">Parliament</li>
-            <li data-coords="5,3"></li>
-            <li data-coords="5,4.65"></li>  
-            <li data-coords="6,4.65"></li>
-            <li data-coords="7,4.65"></li>
-            <li data-coords="7,4"></li>
-            <li data-coords="7,3"></li>
-            <li data-coords="8,3"></li>
-            <li data-coords="9,3" data-marker="station" data-labelPos="S">Kooyong</li>  
-            <li data-coords="10,3" data-marker="station" data-labelPos="S">Tooronga</li>  
-        </ul>
-
-        <ul data-color="#00ffff" data-label="Sandringham" data-shiftCoords="0,1">      
-            <li data-coords="2,4.65" data-marker="station" data-labelPos="S">Southern Cross</li> 
-            <li data-coords="6,4.65" data-marker="station" data-labelPos="S"></li>
-            <li data-coords="8,4.65" data-marker="station" data-labelPos="S">South Yarra</li>  
-            <li data-coords="9,4.65" data-marker="station" data-labelPos="S">Prahran</li>  
-            <li data-coords="10,4.65" data-marker="station" data-labelPos="S">Windsor</li>  
-        </ul>
+    <img class="header_image" src="images/PTV_BRAND_POS_CMYK.jpg" alt="">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="600px" viewBox="0 0 725 250" version="1.1" style="background-color: rgb(255, 255, 255);" >
+        <defs />
+        <g transform="translate(0.5,0.5)">
+            <ellipse id="flagstaff" cx="23" cy="30" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="melbourne_central" cx="120" cy="30" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="richmond_sandringham" cx="325" cy="125" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="parliament" cx="207" cy="30" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="southern_cross" cx="45" cy="125" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="richmond_alamein" cx="325" cy="165" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="richmond_glen_waverly" cx="325" cy="85" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="flinders_street" cx="190" cy="165" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <path d="M 28 30.33 L 114.67 30.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <path d="M 124.67 30.33 L 202.17 30.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <path d="M 49.67 125.33 L 319.67 125.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <path d="M 329.67 85.33 L 355 85.09 Q 365 85 375 85 L 405 85 Q 415 85 415 75 L 415 15 Q 415 5 425 5.06 L 474.67 5.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <ellipse id="kooyong" cx="480" cy="5" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="tooronga" cx="561" cy="5" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <path d="M 194.67 165.33 L 319.67 165.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <path d="M 319.67 85.33 L 275 85.06 Q 265 85 265 75 L 265 40 Q 265 30 255 30.06 L 212.17 30.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <ellipse id="south_yarra" cx="450" cy="125" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="prahran" cx="540" cy="125" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="windsor" cx="630" cy="125" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <path d="M 444.67 125.33 L 329.67 125.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <path d="M 454.67 125.33 L 534.67 125.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <path d="M 544.67 125.33 L 624.67 125.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <path d="M 484.67 5.33 L 556.33 5.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <ellipse id="east_richmond" cx="445" cy="210" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="burnley" cx="535" cy="210" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="hawthorn" cx="620" cy="210" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <ellipse id="glenferrie" cx="700" cy="210" rx="5" ry="5" fill="#ffffff" stroke="#000000" pointer-events="none" />
+            <path d="M 449.67 210.33 L 529.67 210.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <path d="M 539.67 210.33 L 614.67 210.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <path d="M 439.67 210.33 L 415 210.1 Q 405 210 405 200 L 405 175 Q 405 165 395 165.04 L 329.67 165.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <g class="station">
+                <rect x="15" y="135" width="70" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(18.5,138.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="62" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 64px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="southern_cross" class="station_font" style="font-size: 9px">Southern Cross</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="31" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="0" y="45" width="47" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(5.5,48.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="35" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 35px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="flagstaff" class="station_font" style="font-size: 9px">Flagstaff</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="18" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="79" y="45" width="82" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(82.5,48.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="74" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 76px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="melbourne_central" class="station_font" style="font-size: 9px">Melbourne Central</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="37" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="184" y="45" width="47" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(185.5,48.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="44" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="parliament" class="station_font" style="font-size: 9px">Parliament</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="22" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="155" y="175" width="69" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(159.5,178.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="59" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 59px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="flinders_street" class="station_font" style="font-size: 9px">Flinders Street</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="30" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="301" y="175" width="47" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(303.5,178.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="41" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 41px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="richmond" class="station_font" style="font-size: 9px">Richmond</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="21" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="456" y="15" width="47" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(461.5,18.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="35" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 37px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="kooyong" class="station_font" style="font-size: 9px">Kooyong</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="18" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="538" y="15" width="47" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(542.5,18.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="37" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 39px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="tooronga" class="station_font" style="font-size: 9px">Tooronga</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="19" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="420" y="135" width="59" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(425.5,138.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="47" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 49px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="south_yarra" class="station_font" style="font-size: 9px">South Yarra</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="24" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="516" y="135" width="47" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(522.5,138.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="33" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 33px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="prahran" class="station_font" style="font-size: 9px">Prahran</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="17" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="606" y="135" width="47" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(612.5,138.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="33" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 35px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="windsor" class="station_font" style="font-size: 9px">Windsor</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="17" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <path d="M 624.67 210.33 L 694.67 210.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none" />
+            <g class="station">
+                <rect x="408" y="225" width="74" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(413.5,228.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="62" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 62px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="east_richmond" class="station_font" style="font-size: 9px">East Richmond</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="31" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="511" y="225" width="47" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(518.5,228.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="31" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 31px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="burnley" class="station_font" style="font-size: 9px">Burnley</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="16" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="596" y="225" width="47" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(599.5,228.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="39" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 39px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="hawthorn" class="station_font" style="font-size: 9px">Hawthorn</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="20" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+            <g class="station">
+                <rect x="676" y="225" width="47" height="20" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none" />
+                <g transform="translate(679.5,228.5)">
+                    <switch>
+                        <foreignObject style="overflow:visible;" pointer-events="all" width="39" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 41px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+                                    <font id="glenferrie" class="station_font" style="font-size: 9px">Glenferrie</font>
+                                </div>
+                            </div>
+                        </foreignObject>
+                        <text x="20" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+                    </switch>
+                </g>
+            </g>
+        </g>
+    </svg>
+<!--     <div class="submit_clear_buttons">
+        <button id="submit">Submit</button>
+        <button id="clear">Clear</button>
     </div>
-    <div id="legend"></div>
-	<script>
-		$(".subway-map").subwayMap({ debug: true });
-	</script>
-	<script src="app.js"></script>
-
+    <div id="route">
+        <h2>Route</h2>
+        <p id="origin">Origin: <span></span></p>
+        <p id="destination">Destination: <span></span></p>
+        <div id="route_info">
+            <p id="num_stops">How many stops? <span></span></p>
+            <p id="journey">What is the route? <span></span></p>
+        </div>
+    </div> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+    <script src="js/melb_metro_ptv.js"></script>
 </body>
 </html>
