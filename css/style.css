@@ -6,10 +6,9 @@ svg {
 	border: 1px solid black;
 }
 
-rect {
+.station rect {
 	stroke-dasharray: 1000;
 	stroke-dashoffset: 1000;
-	/*pointer-events: all;*/
 	transition: .5s all linear 0s;
 	z-index: 2;
 }
