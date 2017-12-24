@@ -40,9 +40,15 @@ function stationClickEvents() {
 			if (stationsSelected.start.station !== stationsSelected.end.station) {
 				highlightStation("end");
 				clickCount++;
+			} else {
+				stationsSelected.end = {};
 			}
-		} else if (clickCount === 2) {
-			console.log("process");
+		}
+	})
+
+	$('#submit').on('click', function() {
+		if (clickCount === 2 && stationsSelected.start && stationsSelected.end) {
+			actionStationClick(stationsSelected.start.station, stationsSelected.end.station)
 		}
 	})
 	// $('.line ul li button').on('click', function() {
@@ -175,28 +181,28 @@ function actionStationClick(origin, destination) {
 		// Reduces the array of arrays into a single level array
 		journeyArr = journeyArr.reduce((prev,curr) => prev.concat(curr));
 
-		createPath(journeyArr, start_train_line, end_train_line);
+		// createPath(journeyArr, start_train_line, end_train_line);
 
 		// DEBUG
-		// console.log('start line', start_train_line);
-		// console.log('end line', end_train_line);
+		console.log('start line', start_train_line);
+		console.log('end line', end_train_line);
 
-		// console.log('start index', start_index);
-		// console.log('end index', end_index);
+		console.log('start index', start_index);
+		console.log('end index', end_index);
 
-		// console.log('line1_richmond_index', line1_richmond_index);
-		// console.log('line2_richmond_index', line2_richmond_index);
+		console.log('line1_richmond_index', line1_richmond_index);
+		console.log('line2_richmond_index', line2_richmond_index);
 
-		// console.log('path1', path1);
-		// console.log('path2', path2);
+		console.log('path1', path1);
+		console.log('path2', path2);
 
-		// console.log('origin: ' + origin);
-		// console.log('destination: ' + destination);
+		console.log('origin: ' + origin);
+		console.log('destination: ' + destination);
 
-		// console.log('journeyArr', journeyArr);
-		// console.log(numStops + ' stops total');
+		console.log('journeyArr', journeyArr);
+		console.log(numStops + ' stops total');
 
-		// console.log(journeyArr.join(' -----> '));
+		console.log(journeyArr.join(' -----> '));
 
 		if (start_train_line === end_train_line) {
 			var numStops = Math.abs(end_index - start_index);
