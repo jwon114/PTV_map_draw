@@ -2,8 +2,12 @@
 /* Map Styles */
 /**************/
 
+body {
+	font-family: "Arial", sans-serif;
+}
+
 svg {
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 path {
@@ -15,7 +19,7 @@ ellipse {
 }
 
 ellipse.fill, rect.fill {
-	fill: black;
+	fill: coral;
 }
 
 .interchange {
@@ -95,7 +99,7 @@ header {
 
 #journey {
 	flex-grow: 3;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 
