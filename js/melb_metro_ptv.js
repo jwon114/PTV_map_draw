@@ -1,19 +1,19 @@
 var stationLookup = {
-	"southern_cross": "Southern Cross",
-	"flagstaff": "Flagstaff",
-	"melbourne_central": "Melbourne Central",
-	"parliament": "Parliament",
-	"flinders_street": "Flinders Street",
-	"richmond": "Richmond",
-	"kooyong": "Kooyong",
-	"tooronga": "Tooronga",
-	"south_yarra": "South Yarra",
-	"prahran": "Prahran",
-	"windsor": "Windsor",
-	"east_richmond": "East Richmond",
-	"burnley": "Burnley",
-	"hawthorn": "Hawthorn",
-	"glenferrie": "Glenferrie"
+	southern_cross: { name: "Southern Cross", id: "southern_cross_circle" },
+	flagstaff: { name: "Flagstaff", id: "flagstaff_circle" },
+	melbourne_central: { name: "Melbourne Central", id: "melbourne_central_circle" },
+	parliament: { name: "Parliament", id: "parliament_circle" },
+	flinders_street: { name: "Flinders Street", id: "flinders_street_circle" },
+	richmond: { name: "Richmond", id: "richmond_rect" },
+	kooyong: { name: "Kooyong", id: "kooyong_circle" },
+	tooronga: { name: "Tooronga", id: "tooronga_circle" },
+	south_yarra: { name: "South Yarra", id: "south_yarra_circle" },
+	prahran: { name: "Prahran", id: "prahran_circle" },
+	windsor: { name: "Windsor", id: "windsor_circle" },
+	east_richmond: { name: "East Richmond", id: "east_richmond_circle" },
+	burnley: { name: "Burnley", id: "burnley_circle" },
+	hawthorn: { name: "Hawthorn", id: "hawthorn_circle" },
+	glenferrie: {name: "Glenferrie", id: "glenferrie_circle" }
 }
 
 var clickCount = 0;
@@ -31,13 +31,13 @@ function stationClickEvents() {
 		var rectangle
 		if (clickCount === 0) {
 			rectangle = $(event.target).parents(".station")[0].children[0];
-			stationsSelected.start = { station: stationLookup[station.id], rectangle: rectangle };
+			stationsSelected.start = { name: stationLookup[station.id].name, rectangle: rectangle };
 			highlightStation("start");
 			clickCount++;
 		} else if (clickCount === 1) {
 			rectangle = $(event.target).parents(".station")[0].children[0];
-			stationsSelected.end = { station: stationLookup[station.id], rectangle: rectangle };
-			if (stationsSelected.start.station !== stationsSelected.end.station) {
+			stationsSelected.end = { name: stationLookup[station.id].name, rectangle: rectangle };
+			if (stationsSelected.start.name !== stationsSelected.end.name) {
 				highlightStation("end");
 				clickCount++;
 			} else {
@@ -48,41 +48,9 @@ function stationClickEvents() {
 
 	$('#submit').on('click', function() {
 		if (clickCount === 2 && stationsSelected.start && stationsSelected.end) {
-			actionStationClick(stationsSelected.start.station, stationsSelected.end.station)
+			actionStationClick(stationsSelected.start.name, stationsSelected.end.name)
 		}
 	})
-	// $('.line ul li button').on('click', function() {
-	// 	if ($('#origin span').is(':empty')) {
-	// 		$(this).addClass('start');
-	// 		$('#origin span').text(this.textContent);
-	// 	} else if (!($('#origin span').is(':empty')) && !($('#destination span').is(':empty'))) {
-	// 		$('#origin span').text('');
-	// 		$('#destination span').text('');
-	// 		$('.line ul li button.start').removeClass('start');
-	// 		$('.line ul li button.end').removeClass('end');
-	// 	} else {
-	// 		$('#destination span').text(this.textContent);
-	// 		$(this).addClass('end');
-	// 	}
-	// });
-
-	// $('#submit').on('click', function() {
-	// 	if (!($('#origin span').is(':empty')) && !($('#destination span').is(':empty'))) {
-	// 		var origin = $('#origin span').text();
-	// 		var destination = $('#destination span').text();
-	// 		if (origin === destination) {
-	// 			alert('Your origin and destination are the same station!');
-	// 			$('#origin span').text('');
-	// 			$('#destination span').text('');	
-	// 		} else {
-	// 			actionStationClick(origin, destination)
-	// 		}
-	// 	}
-	// });
-
-	// $('#clear').on('click', function() {
-	// 	reset();
-	// })
 }
 
 function highlightStation(position) {
@@ -109,7 +77,7 @@ function actionStationClick(origin, destination) {
 	var start_train_line = '';
 	var end_train_line = '';
 
-	if (origin !== destination) {
+	// if (origin !== destination) {
 		// Find the lines which the origin and destination are on
 		for (var line in ptv) {
 			// Find the origin line
@@ -181,28 +149,28 @@ function actionStationClick(origin, destination) {
 		// Reduces the array of arrays into a single level array
 		journeyArr = journeyArr.reduce((prev,curr) => prev.concat(curr));
 
-		// createPath(journeyArr, start_train_line, end_train_line);
+		createJourney(journeyArr, start_train_line, end_train_line);
 
 		// DEBUG
-		console.log('start line', start_train_line);
-		console.log('end line', end_train_line);
+		// console.log('start line', start_train_line);
+		// console.log('end line', end_train_line);
 
-		console.log('start index', start_index);
-		console.log('end index', end_index);
+		// console.log('start index', start_index);
+		// console.log('end index', end_index);
 
-		console.log('line1_richmond_index', line1_richmond_index);
-		console.log('line2_richmond_index', line2_richmond_index);
+		// console.log('line1_richmond_index', line1_richmond_index);
+		// console.log('line2_richmond_index', line2_richmond_index);
 
-		console.log('path1', path1);
-		console.log('path2', path2);
+		// console.log('path1', path1);
+		// console.log('path2', path2);
 
-		console.log('origin: ' + origin);
-		console.log('destination: ' + destination);
+		// console.log('origin: ' + origin);
+		// console.log('destination: ' + destination);
 
-		console.log('journeyArr', journeyArr);
-		console.log(numStops + ' stops total');
+		// console.log('journeyArr', journeyArr);
+		// console.log(numStops + ' stops total');
 
-		console.log(journeyArr.join(' -----> '));
+		// console.log(journeyArr.join(' -----> '));
 
 		if (start_train_line === end_train_line) {
 			var numStops = Math.abs(end_index - start_index);
@@ -215,9 +183,9 @@ function actionStationClick(origin, destination) {
 		$('#num_stops span').text(numStops + ' stops total');
 		$('#journey span').text(journeyArr.join(' -----> '));
 
-	} else {
-		console.log('Your origin and destination are the same!');
-	}
+	// } else {
+	// 	console.log('Your origin and destination are the same!');
+	// }
 }
 
 function reset() {
@@ -228,6 +196,35 @@ function reset() {
 	$('.line ul li button.start').removeClass('start');
 	$('.line ul li button.end').removeClass('end');
 	// clear highlighted buttons
+}
+
+function createJourney(journeyArray, startLine, endLine) {
+	var stationElementArray = journeyArray.map(function(station) {
+		for (var key in stationLookup) {
+			if (stationLookup[key].name === station) {
+				return stationLookup[key].id
+			}
+		}	
+	})
+
+	var stopCount = 0;
+	(function plotJourney() {
+		setTimeout(function() {
+			$("#" + stationElementArray[stopCount]).addClass("fill");
+			stopCount++;
+			if (stopCount < stationElementArray.length) {
+				plotJourney();
+			}
+		}, 500)
+	})()
+
+	console.log('stationElementArray', stationElementArray);
+}
+
+function stationInterchange(stationsArray) {
+	stationsArray.map(function(station) {
+
+	})
 }
 
 // function createPath(pathArr, startLine, endLine) {
