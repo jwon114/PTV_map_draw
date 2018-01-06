@@ -6,7 +6,24 @@
     <link rel="stylesheet" href="css/style.css">
 </head> 
 <body>
-    <img class="header_image" src="images/PTV_BRAND_POS_CMYK.jpg" alt="">
+    <header>
+        <img class="header_image" src="images/PTV_BRAND_POS_CMYK.jpg" alt="">
+        <div>
+            <ol>
+                <li>Click on a station name to start</li>
+                <li>Click on a station name to end</li>
+                <li>Click on Go to see the route</li>
+            </ol>
+        </div>
+        <div class="submit_clear_buttons">
+            <button id="submit">Go</button>
+            <button id="reset">Reset</button>
+        </div>
+        <div class="route_start_end">
+            <p id="origin">Origin: <span></span></p>
+            <p id="destination">Destination: <span></span></p>
+        </div>
+    </header>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="600px" viewBox="0 0 725 250" version="1.1" style="background-color: rgb(255, 255, 255);" >
         <defs />
         <g transform="translate(0.5,0.5)">
@@ -266,18 +283,10 @@
             </g>
         </g>
     </svg>
-    <div class="submit_clear_buttons">
-        <button id="submit">Submit</button>
-        <button id="clear">Clear</button>
-    </div>
     <div id="route">
         <h2>Route</h2>
-        <p id="origin">Origin: <span></span></p>
-        <p id="destination">Destination: <span></span></p>
-        <div id="route_info">
-            <p id="num_stops">How many stops? <span></span></p>
-            <p id="journey">What is the route? <span></span></p>
-        </div>
+        <p id="num_stops"></p>
+        <p id="journey"></p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
     <script src="js/melb_metro_ptv.js"></script>

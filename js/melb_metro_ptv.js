@@ -25,7 +25,6 @@ $(document).ready(function() {
 
 
 function stationClickEvents() {
-
 	$('.station_font').on('click', function(event) {
 		var station = event.target;
 		var rectangle
@@ -33,12 +32,14 @@ function stationClickEvents() {
 			rectangle = $(event.target).parents(".station")[0].children[0];
 			stationsSelected.start = { name: stationLookup[station.id].name, rectangle: rectangle };
 			highlightStation("start");
+			$('#origin span').text(stationLookup[station.id].name);
 			clickCount++;
 		} else if (clickCount === 1) {
 			rectangle = $(event.target).parents(".station")[0].children[0];
 			stationsSelected.end = { name: stationLookup[station.id].name, rectangle: rectangle };
 			if (stationsSelected.start.name !== stationsSelected.end.name) {
 				highlightStation("end");
+				$('#destination span').text(stationLookup[station.id].name);
 				clickCount++;
 			} else {
 				stationsSelected.end = {};
@@ -50,6 +51,10 @@ function stationClickEvents() {
 		if (clickCount === 2 && stationsSelected.start && stationsSelected.end) {
 			actionStationClick(stationsSelected.start.name, stationsSelected.end.name)
 		}
+	})
+
+	$('#reset').on('click', function() {
+		reset();
 	})
 }
 
@@ -65,6 +70,40 @@ function highlightStation(position) {
 		stationsSelected.end.rectangle.style.strokeDasharray = 500;
 		stationsSelected.end.rectangle.style.strokeDashoffset = 0;
 	}
+}
+
+function removeHighlightStation() {
+	if (stationsSelected.start) {
+		stationsSelected.start.rectangle.style.fill = "";
+		stationsSelected.start.rectangle.style.strokeDasharray = 1000;
+		stationsSelected.start.rectangle.style.strokeDashoffset = 1000;
+	}
+
+	if (stationsSelected.end) {
+		stationsSelected.end.rectangle.style.fill = "";
+		stationsSelected.end.rectangle.style.strokeDasharray = 1000;
+		stationsSelected.end.rectangle.style.strokeDashoffset = 1000;
+	}
+
+	$('#richmond_rect').removeClass('fill');
+}
+
+function resetStationEllipses() {
+	var ellipseArray = $('ellipse');
+	for (var station = 0; station < ellipseArray.length; station++) {
+		ellipseArray[station].classList.remove('fill');
+	}
+}
+
+function reset() {
+	$('#origin span').text('');
+	$('#destination span').text('');
+	$('#num_stops').text('');
+	$('#journey').text('');
+	removeHighlightStation();
+	stationsSelected = {};
+	resetStationEllipses();
+	clickCount = 0;
 }
 
 function actionStationClick(origin, destination) {
@@ -180,22 +219,12 @@ function actionStationClick(origin, destination) {
 			var numStops = line1_stops + line2_stops;
 		}
 
-		$('#num_stops span').text(numStops + ' stops total');
-		$('#journey span').text(journeyArr.join(' -----> '));
+		$('#num_stops').text(numStops + ' stops total');
+		$('#journey').text(journeyArr.join(' -----> '));
 
 	// } else {
 	// 	console.log('Your origin and destination are the same!');
 	// }
-}
-
-function reset() {
-	$('#origin span').text('');
-	$('#destination span').text('');
-	$('#num_stops span').text('');
-	$('#journey span').text('');
-	$('.line ul li button.start').removeClass('start');
-	$('.line ul li button.end').removeClass('end');
-	// clear highlighted buttons
 }
 
 function createJourney(journeyArray, startLine, endLine) {
