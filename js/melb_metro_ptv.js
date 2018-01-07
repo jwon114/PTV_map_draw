@@ -18,6 +18,7 @@ var stationLookup = {
 
 var clickCount = 0;
 var stationsSelected = {};
+var goClicked = false;
 
 $(document).ready(function() {
 	stationClickEvents();
@@ -47,9 +48,12 @@ function stationClickEvents() {
 		}
 	})
 
-	$('#submit').on('click', function() {
-		if (clickCount === 2 && stationsSelected.start && stationsSelected.end) {
-			actionStationClick(stationsSelected.start.name, stationsSelected.end.name)
+	$('#go').on('click', function() {
+		if (!goClicked) {
+			if (clickCount === 2 && stationsSelected.start && stationsSelected.end) {
+				actionStationClick(stationsSelected.start.name, stationsSelected.end.name)
+			}
+			goClicked = true;
 		}
 	})
 
@@ -104,6 +108,7 @@ function reset() {
 	stationsSelected = {};
 	resetStationEllipses();
 	clickCount = 0;
+	goClicked = false;
 }
 
 function actionStationClick(origin, destination) {
