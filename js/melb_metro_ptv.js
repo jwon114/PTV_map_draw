@@ -60,13 +60,13 @@ function stationClickEvents() {
 
 function highlightStation(position) {
 	if (position === "start") {
-		stationsSelected.start.rectangle.style.fill = "red";
+		stationsSelected.start.rectangle.style.fill = "mistyrose";
 		stationsSelected.start.rectangle.style.strokeDasharray = 500;
 		stationsSelected.start.rectangle.style.strokeDashoffset = 0;
 	}
 
 	if (position === "end") {
-		stationsSelected.end.rectangle.style.fill = "blue";
+		stationsSelected.end.rectangle.style.fill = "powderblue";
 		stationsSelected.end.rectangle.style.strokeDasharray = 500;
 		stationsSelected.end.rectangle.style.strokeDashoffset = 0;
 	}
@@ -116,115 +116,111 @@ function actionStationClick(origin, destination) {
 	var start_train_line = '';
 	var end_train_line = '';
 
-	// if (origin !== destination) {
-		// Find the lines which the origin and destination are on
-		for (var line in ptv) {
-			// Find the origin line
-			if (ptv[line].includes(origin)) {
-				start_train_line = line;
-				if (destination === 'Richmond') {
-					end_train_line = line;
-					break;
-				}
-			}
-
-			// Find th destination line
-			if (ptv[line].includes(destination)) {
+	// Find the lines which the origin and destination are on
+	for (var line in ptv) {
+		// Find the origin line
+		if (ptv[line].includes(origin)) {
+			start_train_line = line;
+			if (destination === 'Richmond') {
 				end_train_line = line;
-				if (origin === 'Richmond') {
-					start_train_line = line;
-					break;
-				}
+				break;
 			}
 		}
 
-		// Get start and end indices of stops
-		var start_index = ptv[start_train_line].indexOf(origin);
-		var end_index = ptv[end_train_line].indexOf(destination);
-		var journeyArr = [];
-
-		// If the origin and destination are on the same line
-		if (start_train_line === end_train_line) {
-			// If travelling from right to left
-			if (start_index > end_index) {
-				journeyArr.push(ptv[start_train_line].slice(end_index, start_index + 1).reverse());
-			} else {
-				journeyArr.push(ptv[start_train_line].slice(start_index, end_index + 1));
+		// Find th destination line
+		if (ptv[line].includes(destination)) {
+			end_train_line = line;
+			if (origin === 'Richmond') {
+				start_train_line = line;
+				break;
 			}
+		}
+	}
+
+	// Get start and end indices of stops
+	var start_index = ptv[start_train_line].indexOf(origin);
+	var end_index = ptv[end_train_line].indexOf(destination);
+	var journeyArr = [];
+
+	// If the origin and destination are on the same line
+	if (start_train_line === end_train_line) {
+		// If travelling from right to left
+		if (start_index > end_index) {
+			journeyArr.push(ptv[start_train_line].slice(end_index, start_index + 1).reverse());
 		} else {
-			// Get the index of the Richmond stops on the lines
-			var line1_richmond_index = ptv[start_train_line].indexOf('Richmond');
-			var line2_richmond_index = ptv[end_train_line].indexOf('Richmond');
-			var path1;
-			var path2;
+			journeyArr.push(ptv[start_train_line].slice(start_index, end_index + 1));
+		}
+	} else {
+		// Get the index of the Richmond stops on the lines
+		var line1_richmond_index = ptv[start_train_line].indexOf('Richmond');
+		var line2_richmond_index = ptv[end_train_line].indexOf('Richmond');
+		var path1;
+		var path2;
 
-			// Slice the sections of the lines
-			if ((start_index < line1_richmond_index) && (line2_richmond_index < end_index)) {
-				// Right Right
-				path1 = ptv[start_train_line].slice(start_index, line1_richmond_index);
-				path2 = ptv[end_train_line].slice(line2_richmond_index, end_index + 1);
-			} else if ((start_index < line1_richmond_index) && (end_index < line2_richmond_index)) {
-				// Right Left
-				path1 = ptv[start_train_line].slice(start_index, line1_richmond_index + 1);
-				path2 = ptv[end_train_line].slice(end_index, line2_richmond_index);
-			} else if ((line1_richmond_index < start_index) && (end_index < line2_richmond_index)) {
-				// Left Left
-				path1 = ptv[start_train_line].slice(line1_richmond_index, start_index + 1);
-				path2 = ptv[end_train_line].slice(end_index, line2_richmond_index);
-			} else if ((line1_richmond_index < start_index) && (line2_richmond_index < end_index)) {
-				// Left Right
-				path1 = ptv[start_train_line].slice(line1_richmond_index + 1, start_index + 1);
-				path2 = ptv[end_train_line].slice(line2_richmond_index, end_index + 1);
-			}
-
-			// If the lines are going backwards then reverse the order
-			if (start_index > line1_richmond_index) { path1.reverse() }
-			if (end_index < line2_richmond_index) { path2.reverse() }
-
-			journeyArr.push(path1);
-			journeyArr.push(path2);
+		// Slice the sections of the lines
+		if ((start_index < line1_richmond_index) && (line2_richmond_index < end_index)) {
+			// Right Right
+			path1 = ptv[start_train_line].slice(start_index, line1_richmond_index);
+			path2 = ptv[end_train_line].slice(line2_richmond_index, end_index + 1);
+		} else if ((start_index < line1_richmond_index) && (end_index < line2_richmond_index)) {
+			// Right Left
+			path1 = ptv[start_train_line].slice(start_index, line1_richmond_index + 1);
+			path2 = ptv[end_train_line].slice(end_index, line2_richmond_index);
+		} else if ((line1_richmond_index < start_index) && (end_index < line2_richmond_index)) {
+			// Left Left
+			path1 = ptv[start_train_line].slice(line1_richmond_index, start_index + 1);
+			path2 = ptv[end_train_line].slice(end_index, line2_richmond_index);
+		} else if ((line1_richmond_index < start_index) && (line2_richmond_index < end_index)) {
+			// Left Right
+			path1 = ptv[start_train_line].slice(line1_richmond_index + 1, start_index + 1);
+			path2 = ptv[end_train_line].slice(line2_richmond_index, end_index + 1);
 		}
 
-		// Reduces the array of arrays into a single level array
-		journeyArr = journeyArr.reduce((prev,curr) => prev.concat(curr));
+		// If the lines are going backwards then reverse the order
+		if (start_index > line1_richmond_index) { path1.reverse() }
+		if (end_index < line2_richmond_index) { path2.reverse() }
 
-		createJourney(journeyArr, start_train_line, end_train_line);
+		journeyArr.push(path1);
+		journeyArr.push(path2);
+	}
 
-		// DEBUG
-		// console.log('start line', start_train_line);
-		// console.log('end line', end_train_line);
+	// Reduces the array of arrays into a single level array
+	journeyArr = journeyArr.reduce((prev,curr) => prev.concat(curr));
 
-		// console.log('start index', start_index);
-		// console.log('end index', end_index);
+	createJourney(journeyArr, start_train_line, end_train_line);
 
-		// console.log('line1_richmond_index', line1_richmond_index);
-		// console.log('line2_richmond_index', line2_richmond_index);
+	// DEBUG
+	// console.log('start line', start_train_line);
+	// console.log('end line', end_train_line);
 
-		// console.log('path1', path1);
-		// console.log('path2', path2);
+	// console.log('start index', start_index);
+	// console.log('end index', end_index);
 
-		// console.log('origin: ' + origin);
-		// console.log('destination: ' + destination);
+	// console.log('line1_richmond_index', line1_richmond_index);
+	// console.log('line2_richmond_index', line2_richmond_index);
 
-		// console.log('journeyArr', journeyArr);
-		// console.log(numStops + ' stops total');
+	// console.log('path1', path1);
+	// console.log('path2', path2);
 
-		// console.log(journeyArr.join(' -----> '));
+	// console.log('origin: ' + origin);
+	// console.log('destination: ' + destination);
 
-		if (start_train_line === end_train_line) {
-			var numStops = Math.abs(end_index - start_index);
-		} else {
-			var line1_stops = Math.abs(start_index - line1_richmond_index);
-			var line2_stops = Math.abs(end_index - line2_richmond_index);
-			var numStops = line1_stops + line2_stops;
-		}
+	// console.log('journeyArr', journeyArr);
+	// console.log(numStops + ' stops total');
 
-		$('#num_stops').text(numStops + ' stops total');
-		$('#journey').text(journeyArr.join(' -----> '));
+	// console.log(journeyArr.join(' -----> '));
 
-	// } else {
-	// 	console.log('Your origin and destination are the same!');
-	// }
+	if (start_train_line === end_train_line) {
+		var numStops = Math.abs(end_index - start_index);
+	} else {
+		var line1_stops = Math.abs(start_index - line1_richmond_index);
+		var line2_stops = Math.abs(end_index - line2_richmond_index);
+		var numStops = line1_stops + line2_stops;
+	}
+
+	$('#num_stops').text(numStops + ' stops total');
+	$('#journey').html(journeyArr.join(' <i class="fa fa-arrow-right"></i> '));
+	// $('#journey').text(journeyArr.join(' -----> '));
 }
 
 function createJourney(journeyArray, startLine, endLine) {
@@ -246,14 +242,6 @@ function createJourney(journeyArray, startLine, endLine) {
 			}
 		}, 500)
 	})()
-
-	console.log('stationElementArray', stationElementArray);
-}
-
-function stationInterchange(stationsArray) {
-	stationsArray.map(function(station) {
-
-	})
 }
 
 // function createPath(pathArr, startLine, endLine) {

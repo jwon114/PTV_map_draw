@@ -19,17 +19,11 @@ ellipse {
 }
 
 ellipse.fill, rect.fill {
-	fill: coral;
+	fill: chocolate;
 }
 
 .interchange {
 	fill: gainsboro;
-}
-
-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 }
 
 .route_start_end {
@@ -65,27 +59,88 @@ header {
 	stroke: red;
 }
 
+/**********/
+/* Header */
+/**********/
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .header_image {
 	height: 100px;
 	width: auto;
 }
 
+.station_label_container {
+	display: flex;
+	align-items: center;
+}
+
+.glen_waverly, .sandringham, .alamein {
+	width: 40px;
+	height: 20px;
+	margin: 1px 10px 1px 1px;
+}
+
+.glen_waverly {
+	background-color: red;
+}
+
+.sandringham {
+	background-color: green;
+}
+
+.alamein {
+	background-color: purple;
+}
+
 .submit_clear_buttons {
 	display: flex;
 	align-items: center;
-	/*margin-top: 50px;*/
 }
 
 #submit, #reset {
 	font-size: 24px;
 }
 
+#reset {
+	margin-left: 10px;
+}
+
+#origin {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+#origin p {
+	margin: 0;
+	background-color: mistyrose;
+}
+
+#origin span {
+	margin-left: 10px;
+}
+
+#destination {
+	display: flex;
+}
+
+#destination p {
+	margin: 0;
+	background-color: powderblue;
+}
+
+#destination span {
+	margin-left: 10px;
+}
+
 #route {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	/*margin-left: 25%;*/
-	/*margin: 50px 0 100px 25%;*/
 }
 
 #route h2 {
@@ -101,5 +156,7 @@ header {
 	flex-grow: 3;
 	font-size: 18px;
 }
+
+
 
 
