@@ -245,7 +245,7 @@ function createJourney(journeyArray, startLine, endLine) {
 			if (stopCount < stationElementArray.length) {
 				plotJourney();
 			}
-		}, 300)
+		}, 350)
 	})()
 }
 
