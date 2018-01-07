@@ -245,51 +245,9 @@ function createJourney(journeyArray, startLine, endLine) {
 			if (stopCount < stationElementArray.length) {
 				plotJourney();
 			}
-		}, 500)
+		}, 300)
 	})()
 }
-
-// function createPath(pathArr, startLine, endLine) {
-	// console.log((startLine !== endLine));
-	// console.log((pathArr.length === 2) && (pathArr.includes('Richmond')) && (startLine !== endLine));
-	// if (pathArr.length > 2) {
-	// 	pathArr.shift();
-	// 	pathArr.pop();
-	// 	var stop = 0;
-	// 	// self invoking, recursive call on plotPath function while counting up pathArr, this loops through each element with a 500ms delay
-	// 	(function plotPath() {
-	// 		setTimeout(function() {
-	// 			console.log(pathArr[stop]);
-	// 			$('#' + startLine + ' ul li button').filter(function() { 
-	// 				return $(this).text() === pathArr[stop];
-	// 			}).addClass('highlight');
-	// 			$('#' + endLine + ' ul li button').filter(function() { 
-	// 				return $(this).text() === pathArr[stop];
-	// 			}).addClass('highlight');
-	// 			stop++;
-	// 			if (stop < pathArr.length) {
-	// 				plotPath(stop, pathArr, startLine);
-	// 			}
-	// 		}, 500)
-	// 	})()
-	// }
-	// } else if ((pathArr.length === 2) && (pathArr.includes('Richmond')) && (startLine === endLine)) {
-	// 	console.log('here');
-	// 	$('#' + startLine + 'ul li button').filter(function() {
-	// 		return $(this).text() === 'Richmond';
-	// 	}).removeClass('start');
-	// 	$('#' + endLine + 'ul li button').filter(function() {
-	// 		return $(this).text() === 'Richmond';
-	// 	}).addClass('start');
-	// }
-// }
-
-
-
-
-
-
-
 
 
 
